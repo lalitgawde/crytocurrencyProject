@@ -1,6 +1,7 @@
 /* Overview.module.css */
 .container {
   padding: 20px;
+  min-height: 42rem !important;
 }
 
 .card {

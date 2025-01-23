@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import DefaultRoute from "./DefaultRoute";
 import CryptoContextProvider from "./store/CryptoContext";
+import Footer from "./components/Layout/Footer/Footer";
 
 const theme = createTheme({
   palette: {
@@ -25,6 +26,7 @@ const App = () => (
       <BrowserRouter>
         <Header />
         <DefaultRoute />
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   </CryptoContextProvider>
