@@ -1,0 +1,106 @@
+/* General header styling */
+.header {
+  background-color: #ff1b68;
+  height: 4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Logo is aligned left */
+.header_logo {
+  font-size: 23px;
+  color: white;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Navigation items are aligned right */
+.header_nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+
+/* Navigation list styling */
+.main-nav__items {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Individual list items (buttons, badge, avatar) */
+.header_nav li {
+  margin-left: 16px;
+}
+
+/* Buttons styling */
+.header_nav_button {
+  font-family: "Montserrat", sans-serif;
+  font-size: large;
+  color: white;
+  background: #ff1b68;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 2px solid black;
+  cursor: pointer;
+}
+
+.active {
+  background-color: white !important;
+  color: #ff1b68 !important;
+  text-decoration: none !important;
+}
+
+.header_nav_button:hover {
+  color: #ff1b68;
+  background: white;
+  border: 2px solid black;
+}
+
+/* Avatar styling */
+.header_nav__image {
+  font-family: "Montserrat", sans-serif;
+  font-size: medium;
+  border-radius: 50%;
+  padding: 9px;
+  background-color: #ccc;
+  color: #000;
+}
+
+.header_nav__image:hover {
+  cursor: pointer;
+}
+
+/* Badge margin adjustments */
+.badge {
+  margin-right: 16px;
+}
+
+/* Responsive styling for mobile view */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+  }
+
+  .main-nav__items {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header_nav_button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .header_nav__image {
+    margin-bottom: 10px;
+  }
+}

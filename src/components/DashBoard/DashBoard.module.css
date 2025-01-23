@@ -1,0 +1,11 @@
+.title {
+  text-align: center;
+}
+
+.Heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+}

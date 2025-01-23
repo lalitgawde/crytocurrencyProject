@@ -1,0 +1,93 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: #ff1b68;
+  font-weight: bolder;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  width: 20rem;
+  font-size: 1.3rem !important;
+  color: black;
+  padding: 8px;
+}
+
+.list-text {
+  text-align: center;
+  font-family: arial, sans-serif;
+  font-size: 1.2rem;
+}
+
+.button {
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.searchContainer {
+  position: relative;
+}
+
+.searchContainer input {
+  padding: 13px;
+}
+
+.searchContainer button {
+  margin: 5px;
+}
+
+.searchContainer .input {
+  background-color: white;
+  width: 16rem;
+  border-radius: 12px;
+  font-size: 17px;
+  font-weight: 300;
+  margin-right: 10px;
+}
+
+.searchContainer div:focus {
+  outline: 0;
+}
+
+/* .searchIcon {
+  position: absolute;
+  left: 250px;
+  top: 50px;
+  transform: translateY(-10%);
+  font-size: 20px;
+  pointer-events: none;
+  color: white;
+} */
+
+.assessmentTypeSearchWrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: black !important;
+}
+
+.assessmentTypeSearchWrap .crossBtn {
+  margin-left: 10px;
+}
+
+.MuiInputAdornmentPositionStart {
+  margin-right: 0px !important;
+}
+
+.Heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+}

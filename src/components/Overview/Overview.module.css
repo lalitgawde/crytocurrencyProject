@@ -1,0 +1,23 @@
+/* Overview.module.css */
+.container {
+  padding: 20px;
+}
+
+.card {
+  margin: 20px auto;
+  max-width: 80rem;
+  padding: 20px;
+}
+
+.detailCard {
+  flex: 1;
+  min-width: 200px;
+}
+
+.Heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  text-align: center;
+}
