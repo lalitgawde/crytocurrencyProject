@@ -91,3 +91,8 @@ th {
   height: 70vh;
   text-align: center;
 }
+
+.MuiTablePagination-root div,
+p {
+  font-size: 1.05rem !important;
+}

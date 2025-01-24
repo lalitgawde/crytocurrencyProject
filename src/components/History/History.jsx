@@ -151,6 +151,17 @@ function History(props) {
             onPageChange={handleChangePage}
             rowsPerPage={rowsPerPage}
             onRowsPerPageChange={handleChangeRowsPerPage}
+            sx={{
+              ".MuiTablePagination-toolbar": {
+                fontSize: "1.2rem",
+              },
+              ".MuiTablePagination-selectLabel, .MuiTablePagination-input": {
+                fontSize: "1.1rem",
+              },
+              ".MuiTablePagination-actions": {
+                fontSize: "1.1rem",
+              },
+            }}
           />
         </Grid>
       </Grid>
