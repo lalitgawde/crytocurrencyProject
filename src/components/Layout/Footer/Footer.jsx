@@ -37,7 +37,7 @@ const Footer = () => {
       }}
     >
       <Typography variant="body2" color="textSecondary">
-        Last Updated: {lastUpdated ? lastUpdated : "Loading..."}
+        Last Updated: {lastUpdated ? lastUpdated : "02/03/2025"}
       </Typography>
     </Box>
   );

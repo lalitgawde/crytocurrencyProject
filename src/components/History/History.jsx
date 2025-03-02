@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import { CryptoContext } from "../../store/CryptoContext";
 import { Button, Grid } from "@mui/material";
-import RestoreIcon from "@mui/icons-material/Restore";
 import style from "./History.module.css";
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
@@ -46,11 +45,12 @@ function History(props) {
     fetchHistoricalData(cryptoContext.cryptoCurrency).then((res) => {
       const historyData = [];
       if (res.message === "Data Fetch Successfully") {
-        for (let i = 0; i < res.data.data.length; i++) {
+        for (let i = 0; i < res.data.length; i++) {
           const obj = {
-            time: new Date(res.data.data[i].time),
-            price: Math.round(+res.data.data[i].priceUsd),
-            date: new Date(res.data.data[i].time),
+            time: new Date(res.data[i].time),
+            // price: Math.round(+res.data[i].priceUsd),
+            price: +res.data[i].priceUsd.toFixed(2),
+            date: new Date(res.data[i].time),
           };
           historyData.push(obj);
         }

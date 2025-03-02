@@ -1,0 +1,14 @@
+.coursel {
+  display: flex;
+  height: 50%;
+  align-items: center;
+}
+
+.carouselItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: white;
+}

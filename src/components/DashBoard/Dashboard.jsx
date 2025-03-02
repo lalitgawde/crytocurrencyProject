@@ -44,7 +44,9 @@ const Dashboard = () => {
           setPercentageChange(parseFloat(res.changePercent24Hr).toFixed(2));
           setID(res.id);
           setSymbol(res.symbol);
-          const labels = res.history.map((entry) => entry.date.split("T")[0]);
+          const labels = res.history.map((entry) => {
+            return new Date(entry.time).toISOString().split("T")[0];
+          });
           const prices = res.history.map((entry) =>
             parseFloat(entry.priceUsd).toFixed(2)
           );
