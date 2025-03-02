@@ -55,6 +55,7 @@ const Header = () => {
                 component={NavLink}
                 to={`/Dashboard/${currency}`}
                 className={({ isActive }) => (isActive ? styles.active : "")}
+                disabled={cryptoContext.cryptoCurrency === ""}
               >
                 Dashboard
               </Button>
@@ -64,6 +65,7 @@ const Header = () => {
                 component={NavLink}
                 to={`/Overview/${currency}`}
                 className={({ isActive }) => (isActive ? styles.active : "")}
+                disabled={cryptoContext.cryptoCurrency === ""}
               >
                 Overview
               </Button>
@@ -73,6 +75,7 @@ const Header = () => {
                 component={NavLink}
                 to={"/History/" + currency}
                 className={({ isActive }) => (isActive ? styles.active : "")}
+                disabled={cryptoContext.cryptoCurrency === ""}
               >
                 History
               </Button>
