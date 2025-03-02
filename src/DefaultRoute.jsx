@@ -21,7 +21,7 @@ function DefaultRoute(props) {
       <Route exact path="/History/:currency">
         <History />
       </Route>
-      <Redirect to="/" />
+      {/* <Redirect to="/" /> */}
     </Switch>
   );
 }

@@ -64,6 +64,7 @@ function Coursel(props) {
   });
 
   useEffect(() => {
+    cryptoContext.setCryptoCurrency("");
     if (cryptoContext.currency) {
       FetchAllCryptoCurrency(cryptoContext.currency)
         .then((data) => {

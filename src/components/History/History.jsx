@@ -179,7 +179,7 @@ function History(props) {
       )}
     </div>
   ) : (
-    <div className={styles.Heading}>
+    <div className={style.Heading}>
       <h2>Please Select the CryptoCurrency</h2>
     </div>
   );

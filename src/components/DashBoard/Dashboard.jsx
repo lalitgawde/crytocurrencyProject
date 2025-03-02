@@ -15,6 +15,9 @@ import {
 import { Box, Card, CardContent, Typography } from "@mui/material";
 import CircularLoader from "../UI/CircularLoader";
 import styles from "./DashBoard.module.css";
+import { chartDays } from "../../config/data";
+import SelectButton from "../UI/SelectButton";
+
 ChartJS.register(
   LineElement,
   PointElement,
@@ -27,6 +30,7 @@ ChartJS.register(
 
 const Dashboard = () => {
   const cryptoContext = useContext(CryptoContext);
+  const [days, setDays] = useState(7);
   const [currentPrice, setCurrentPrice] = useState(null);
   const [symbol, setSymbol] = useState("");
   const [id, setID] = useState("");
@@ -37,7 +41,7 @@ const Dashboard = () => {
   useEffect(() => {
     if (cryptoContext.cryptoCurrency) {
       setLoading(true);
-      fetchCryptoData(cryptoContext.cryptoCurrency).then((res) => {
+      fetchCryptoData(cryptoContext.cryptoCurrency, days).then((res) => {
         console.log("res", res);
         if (res.message === "Data Fetch Successfully") {
           setCurrentPrice(parseFloat(res.priceUsd).toFixed(2));
@@ -70,7 +74,7 @@ const Dashboard = () => {
         setLoading(false);
       });
     }
-  }, [cryptoContext.cryptoCurrency]);
+  }, [cryptoContext.cryptoCurrency, days]);
 
   return cryptoContext.cryptoCurrency !== "" ? (
     <div>
@@ -109,7 +113,10 @@ const Dashboard = () => {
               <Card>
                 <CardContent>
                   <Typography variant="h6" gutterBottom>
-                    7-Day Price Trend
+                    {`${
+                      chartDays.filter((day) => day.value === days)[0].label
+                    }`}{" "}
+                    Price Trend
                   </Typography>
                   <Line
                     data={chartData}
@@ -138,6 +145,26 @@ const Dashboard = () => {
           </>
         )}
       </Box>
+      <div
+        style={{
+          display: "flex",
+          marginTop: 20,
+          justifyContent: "space-around",
+          width: "100%",
+        }}
+      >
+        {chartDays.map((day) => (
+          <SelectButton
+            key={day.value}
+            onClick={() => {
+              setDays(day.value);
+            }}
+            selected={day.value === days}
+          >
+            {day.label}
+          </SelectButton>
+        ))}
+      </div>
     </div>
   ) : (
     <div className={styles.Heading}>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchCryptoData = async (currency) => {
+export const fetchCryptoData = async (currency, days) => {
   // try {
   //   let cryptoCurrencyNew = currency;
   //   if (currency === "ripple") {
@@ -32,7 +32,7 @@ export const fetchCryptoData = async (currency) => {
   // }
   try {
     let cryptoCurrencyNew = currency.toLowerCase();
-
+    console.log("days", days);
     // Handle special cases where CoinGecko uses different IDs
     if (currency.toLowerCase() === "ripple") {
       cryptoCurrencyNew = "ripple"; // CoinGecko uses "ripple" instead of "xrp"
@@ -49,7 +49,7 @@ export const fetchCryptoData = async (currency) => {
 
     // Fetch historical data (last 7 days)
     const historicalResponse = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/${cryptoCurrencyNew}/market_chart?vs_currency=usd&days=7&interval=daily`
+      `https://api.coingecko.com/api/v3/coins/${cryptoCurrencyNew}/market_chart?vs_currency=usd&days=${days}&interval=daily`
     );
 
     // Format historical data
