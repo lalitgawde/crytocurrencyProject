@@ -3,10 +3,14 @@ import { Container } from "@mui/system";
 import React from "react";
 import Coursel from "../Coursel/Coursel";
 import classes from "./Banner.module.css";
+import bannerImage from "../../assets/banner2.jpg";
 
 function Banner(props) {
   return (
-    <div className={classes.banner}>
+    <div
+      style={{ backgroundImage: `url(${bannerImage})` }}
+      className={classes.banner}
+    >
       <Container className={classes.bannerContainer}>
         <div className={classes.tagline}>
           <Typography
