@@ -12,11 +12,14 @@ import {
   Legend,
   CategoryScale,
 } from "chart.js";
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, Typography, Button } from "@mui/material";
 import CircularLoader from "../UI/CircularLoader";
 import styles from "./DashBoard.module.css";
 import { chartDays } from "../../config/data";
 import SelectButton from "../UI/SelectButton";
+import { UserContext } from "../../store/UserContext";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../../firebaseConfig";
 
 ChartJS.register(
   LineElement,
@@ -29,7 +32,9 @@ ChartJS.register(
 );
 
 const Dashboard = () => {
+  // const inWatchlist = false;
   const cryptoContext = useContext(CryptoContext);
+  const { user } = useContext(UserContext);
   const [days, setDays] = useState(7);
   const [currentPrice, setCurrentPrice] = useState(null);
   const [symbol, setSymbol] = useState("");
@@ -37,6 +42,8 @@ const Dashboard = () => {
   const [percentageChange, setPercentageChange] = useState(null);
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const inWatchlist = cryptoContext.watchlist.includes(id);
 
   useEffect(() => {
     if (cryptoContext.cryptoCurrency) {
@@ -76,6 +83,56 @@ const Dashboard = () => {
     }
   }, [cryptoContext.cryptoCurrency, days]);
 
+  const addToWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        {
+          coins: cryptoContext.watchlist
+            ? [...cryptoContext.watchlist, id]
+            : [id],
+        },
+        { merge: true }
+      );
+
+      cryptoContext.setAlert({
+        open: true,
+        message: `${cryptoContext.cryptoCurrency} Added to the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      cryptoContext.setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
+
+  const removeFromWatchlist = async () => {
+    const coinRef = doc(db, "watchlist", user.uid);
+    try {
+      await setDoc(
+        coinRef,
+        { coins: cryptoContext.watchlist.filter((wish) => wish !== id) },
+        { merge: true }
+      );
+
+      cryptoContext.setAlert({
+        open: true,
+        message: `${cryptoContext.cryptoCurrency} Removed from the Watchlist !`,
+        type: "success",
+      });
+    } catch (error) {
+      cryptoContext.setAlert({
+        open: true,
+        message: error.message,
+        type: "error",
+      });
+    }
+  };
+
   return cryptoContext.cryptoCurrency !== "" ? (
     <div>
       <h2 className={styles.title}>
@@ -83,6 +140,21 @@ const Dashboard = () => {
         {cryptoContext.cryptoCurrency.charAt(0).toUpperCase() +
           cryptoContext.cryptoCurrency.slice(1)}
       </h2>
+      {user && (
+        <Button
+          variant="outlined"
+          className={styles.watchListButton}
+          style={
+            {
+              // width: "100%",
+              // backgroundColor: inWatchlist ? "#ff0000" : "#EEBC1D",
+            }
+          }
+          onClick={inWatchlist ? removeFromWatchlist : addToWatchlist}
+        >
+          {inWatchlist ? "Remove from Watchlist" : "Add to Watchlist"}
+        </Button>
+      )}
       <Box sx={{ p: 4 }}>
         {loading ? (
           <CircularLoader />

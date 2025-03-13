@@ -5,6 +5,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import DefaultRoute from "./DefaultRoute";
 import CryptoContextProvider from "./store/CryptoContext";
 import Footer from "./components/Layout/Footer/Footer";
+import UserContextProvider from "./store/UserContext";
+import AlertBar from "./components/Auth/Alert";
 
 const theme = createTheme({
   palette: {
@@ -22,13 +24,16 @@ const theme = createTheme({
 
 const App = () => (
   <CryptoContextProvider>
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Header />
-        <DefaultRoute />
-        <Footer />
-      </BrowserRouter>
-    </ThemeProvider>
+    <UserContextProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Header />
+          <AlertBar />
+          <DefaultRoute />
+          <Footer />
+        </BrowserRouter>
+      </ThemeProvider>
+    </UserContextProvider>
   </CryptoContextProvider>
 );
 

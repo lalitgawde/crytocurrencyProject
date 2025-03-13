@@ -5,10 +5,14 @@ import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import styles from "./Header.module.css";
 import { CryptoContext } from "../../../store/CryptoContext";
+import AuthModal from "../../Auth/AuthModal";
+import { UserContext } from "../../../store/UserContext";
+import UserSidebar from "../../Auth/UserSideBar";
 
 const Header = () => {
   const history = useHistory();
   const cryptoContext = useContext(CryptoContext);
+  const { user } = useContext(UserContext);
   const currency = cryptoContext.cryptoCurrency;
   const cryptos = ["USD", "INR"];
   const handleSelection = (e) => {
@@ -80,6 +84,7 @@ const Header = () => {
                 History
               </Button>
             </li>
+            <li>{user ? <UserSidebar /> : <AuthModal />}</li>
           </ul>
         </nav>
       </header>

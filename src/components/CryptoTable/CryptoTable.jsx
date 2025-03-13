@@ -25,12 +25,12 @@ export function numberWithCommas(x) {
 }
 
 export default function CoinsTable() {
-  const [coins, setCoins] = useState([]);
+  // const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(false);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const history = useHistory();
-  const { currency } = useContext(CryptoContext);
+  const { currency, coins, setCoins } = useContext(CryptoContext);
   const cryptoContext = useContext(CryptoContext);
 
   const darkTheme = createTheme({
