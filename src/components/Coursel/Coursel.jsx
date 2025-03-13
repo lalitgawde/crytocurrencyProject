@@ -24,7 +24,6 @@ function Coursel(props) {
   };
 
   const items = trendingCurrency.map((coin) => {
-    console.log(coin);
     let profit = coin?.price_change_percentage_24h >= 0;
 
     return (

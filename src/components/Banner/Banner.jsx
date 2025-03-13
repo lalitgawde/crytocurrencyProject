@@ -5,7 +5,7 @@ import Coursel from "../Coursel/Coursel";
 import classes from "./Banner.module.css";
 import bannerImage from "../../assets/banner2.jpg";
 
-function Banner(props) {
+function Banner() {
   return (
     <div
       style={{ backgroundImage: `url(${bannerImage})` }}

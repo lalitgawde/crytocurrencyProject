@@ -65,7 +65,6 @@ function History(props) {
     const search = searchHistoryData.filter(
       (item) => item.price == searchValue
     );
-    console.log("serch", search);
     setHistoryData(search);
   };
 

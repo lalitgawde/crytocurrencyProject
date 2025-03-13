@@ -19,8 +19,6 @@ export default function UserSidebar() {
   });
   const { setAlert, watchlist, cryptoCurrency, currency } = cryptoContext;
 
-  console.log(watchlist, cryptoCurrency);
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&

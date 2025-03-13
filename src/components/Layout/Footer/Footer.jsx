@@ -13,9 +13,7 @@ const Footer = () => {
         const assetResponse = await axios.get(
           `https://api.coincap.io/v2/assets/${cryptoContext.cryptoCurrency}`
         );
-        console.log("assetResponse", assetResponse.data);
         const timestamp = assetResponse.data.timestamp;
-        console.log(formatTimestamp(timestamp), timestamp);
         setLastUpdated(formatTimestamp(timestamp));
       }
     };
