@@ -17,7 +17,8 @@ export default function UserSidebar() {
   const [state, setState] = React.useState({
     right: false,
   });
-  const { setAlert, watchlist, cryptoCurrency, currency } = cryptoContext;
+  const { setAlert, watchlist, cryptoCurrency, currency, setWatchlist } =
+    cryptoContext;
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -37,7 +38,7 @@ export default function UserSidebar() {
       type: "success",
       message: "Logout Successfull !",
     });
-
+    setWatchlist([]);
     toggleDrawer();
   };
 
